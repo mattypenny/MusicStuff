@@ -1,4 +1,4 @@
-function New-MuSpotifyPlaylistFromCrucialTracksCommunityPlaylist {
+function New-MsSpotifyPlaylistFromCrucialTracksCommunityPlaylist {
     <#
 .SYNOPSIS
    xx
@@ -63,7 +63,7 @@ function New-MuSpotifyPlaylistFromCrucialTracksCommunityPlaylist {
    
 }
 
-function Get-MuTextFromHtmlLine {
+function Get-MsTextFromHtmlLine {
     <#
 .SYNOPSIS
    Extract text from an HTML line, like <div class="text-zinc-600 dark:text-zinc-400">Bethany Eve</div> 

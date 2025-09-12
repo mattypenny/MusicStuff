@@ -1,4 +1,4 @@
-function New-MuSpotifyPlaylistFromList {
+function New-MsSpotifyPlaylistFromList {
     <#
 .SYNOPSIS
    Read a file containing a list of tracks, and create a playlist from the tracks in the file. 
@@ -98,7 +98,7 @@ function New-MuSpotifyPlaylistFromList {
    
 }
 
-function New-MuSpotifyPlaylist {
+function New-MsSpotifyPlaylist {
     <#
 .SYNOPSIS
    xx
@@ -123,7 +123,7 @@ function New-MuSpotifyPlaylist {
     return $Playlist
    
 }
-function Add-MuSpotifyTrackToPlaylist {
+function Add-MsSpotifyTrackToPlaylist {
     <#
 .SYNOPSIS
    xx

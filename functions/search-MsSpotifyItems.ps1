@@ -1,5 +1,5 @@
-import-module -force Spotishell
-function Search-MuSpotifyItems {
+
+function Search-MsSpotifyItems {
     <#
 .SYNOPSIS
    Search and return in more powershell-y format
