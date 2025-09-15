@@ -25,8 +25,8 @@ function New-MsSpotifyPlaylistFromCrucialTracksCommunityPlaylist {
             $ArtistLine = $line
             $FoundSong = $False
 
-            $Artist = Get-MuTextFromHtmlLine -HtmlLine $ArtistLine
-            $Song = Get-MuTextFromHtmlLine -HtmlLine $SongLine
+            $Artist = Get-MsTextFromHtmlLine -HtmlLine $ArtistLine
+            $Song = Get-MsTextFromHtmlLine -HtmlLine $SongLine
             [PSCustomObject]@{
                 ArtistLine = $ArtistLine
                 SongLine   = $SongLine
