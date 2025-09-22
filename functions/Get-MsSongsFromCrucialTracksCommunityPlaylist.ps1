@@ -1,4 +1,4 @@
-function Get-SongsFromCrucialTracksCommunityPlaylist {
+function Get-MsSongsFromCrucialTracksCommunityPlaylist {
     <#
 .SYNOPSIS
    xx
