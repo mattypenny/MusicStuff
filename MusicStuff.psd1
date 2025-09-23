@@ -5,12 +5,7 @@
     # ScriptsToProcess = @("C:\Users\matty\OneDrive\powershell\Modules\MusicStuff\functions\*.ps1")
 
     # Public functions to export
-    FunctionsToExport = @("*-Ms*",
-                          "Get-*CrucialTracks*",
-                          "New-*PlaylistFrom*",
-                          "Add-*TrackToPlaylist",
-                          "Get-MsSongsFromCrucialTracksCommunityPlaylist",
-                          "New-MsSpotifyPlaylist")
+    FunctionsToExport = @("*-Ms*")
 
     ModuleVersion     = '0.1.0'
 
