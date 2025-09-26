@@ -38,8 +38,27 @@ function New-MsPlaylistFromSource {
             throw "Unknown SourceType: <$SourceType>"
         }
     }
+
+    $NewPlaylistParams = @{
+        PlaylistName        = $TargetPlaylistName
+        ApplicationName     = 'spotishell'
+        PlaylistFolder      = $TargetPlaylistFolder
+        PlaylistDescription = $TargetPlaylistDescription
+    }
    
-   
+    $playlist = New-MsSpotifyPlaylist @NewPlaylistParams
+
+
+   $NewPlaylistFromListParams = @{
+        ListOfSongs         = $Tracks
+        PlaylistName        = $TargetPlaylistName
+        ApplicationName     = 'spotishell'
+        PlaylistFolder      = $TargetPlaylistFolder
+        PlaylistDescription = $TargetPlaylistDescription
+    }
+
+    New-MsSpotifyPlaylistFromList @NewPlaylistFromListParams
+ 
     write-endfunction
    
     return $Tracks
