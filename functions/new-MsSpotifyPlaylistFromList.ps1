@@ -1,17 +1,12 @@
 function New-MsSpotifyPlaylistFromList {
     <#
 .SYNOPSIS
-   Read a file containing a list of tracks, and create a playlist from the tracks in the file. 
+   create a playlist from a supplied list of songs
 .DESCRIPTION
-    Read a file containing a list of tracks, and create a playlist from the tracks in the file. 
-    The user will be prompted to select the correct track from a list of tracks that match the search string.
 .EXAMPLE
-    New-MuSpotifyPlaylistFromFile -FileName 'C:\temp\BestPsychobilly.txt' -PlaylistName 'Best Psychobilly'
-    This will create a playlist called 'Best Psychobilly' from the tracks in the file 'C:\temp\BestPsychobilly.txt'
 #>
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $False)][string]$FileName,
         [Parameter(Mandatory = $False)][string[]]$ListOfSongs,
         [Parameter(Mandatory = $True)][string]$PlaylistName,
         [string]$ApplicationName = 'spotishell',
@@ -31,37 +26,8 @@ function New-MsSpotifyPlaylistFromList {
         PlaylistFolder      = $PlaylistFolder
         PlaylistDescription = $PlaylistDescription
     }
-    $playlist = New-MuSpotifyPlaylist @NewPlaylistParams
+    $playlist = New-MsSpotifyPlaylist @NewPlaylistParams
    
-    if ($Filename) {
-        if (-not (Test-Path $FileName)) {
-            throw "File $FileName does not exist"
-        }
-        # reading the file
-        $fileContent = Get-Content $FileName
-
-        $ListOfSongs = foreach ($line in $fileContent) {
-
-            if (!($line)) {
-                continue
-            }
-            if ($line -match '^\s*#') {
-                continue
-            }
-            if ($line -match '^\s*$') {
-                continue
-            }
-            write-dbg "`$line: <$line>"
-
-            [PSCustomObject]@{
-                Song = $Line
-            }
-        }
-    }
-    if (-not $ListOfSongs) {
-        throw "No songs found in file $FileName"
-    }    
-
     foreach ($line in $ListOfSongs) {
         $SplatParameters = @{
             SearchString    = $line
