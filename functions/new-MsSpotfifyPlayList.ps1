@@ -16,8 +16,15 @@ function New-MsSpotifyPlaylist {
    
     write-startfunction
    
-    $Playlist = New-Playlist -UserId (Get-CurrentUserProfile -ApplicationName $ApplicationName).id -Name $PlaylistName -Description $PlaylistDescription -ApplicationName $ApplicationName
-   
+     $playlistParams = @{
+        UserId          = (Get-SpoCurrentUserProfile -ApplicationName $ApplicationName).id
+        Name            = $PlaylistName
+        Description     = $PlaylistDescription
+        ApplicationName = $ApplicationName
+    }
+
+    $Playlist = New-SpoPlaylist @playlistParams
+
     write-dbg "`$Playlist count: <$($Playlist.Length)>"
     write-endfunction
    
