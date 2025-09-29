@@ -20,6 +20,7 @@ function Search-MsSpotifyItems {
 
     . C:\Users\matty\OneDrive\backups\backup_of_repair_websites\Documents\PowerShell\Modules\Spotishell\1.1.1\Private\Send-SpotifyCall.ps1
     
+    write-dbg "Searching for <$SearchString> with application name <$ApplicationName>"
     $tracks = search-Item $SearchString -type Track -ApplicationName spotishell
     write-dbg "`$tracks returned from search count: <$($tracks.Length)>"
 

@@ -11,13 +11,13 @@ function New-MsPlaylistFromSource {
             'File'
         )] 
         $SourceType,
-        [Parameter(Mandatory = $True)][string]$SourceURL,
-        [Parameter(Mandatory = $True)][string]$SourceCrucialTracksPrompt,
-        [Parameter(Mandatory = $True)][string]$SourceFilePath,
-        [Parameter(Mandatory = $True)][string]$TargetType,
+        [Parameter(Mandatory = $False)][string]$SourceURL,
+        [Parameter(Mandatory = $False)][string]$SourceCrucialTracksPrompt,
+        [Parameter(Mandatory = $False)][string]$SourceFilePath,
+        [Parameter(Mandatory = $False)][string]$TargetType,
         [Parameter(Mandatory = $True)][string]$TargetPlaylistName,
-        [Parameter(Mandatory = $True)][string]$TargetPlaylistFolder,
-        [Parameter(Mandatory = $True)][string]$TargetPlaylistDescription
+        [Parameter(Mandatory = $False)][string]$TargetPlaylistFolder,
+        [Parameter(Mandatory = $False)][string]$TargetPlaylistDescription
     )
    
     $DebugPreference = $PSCmdlet.GetVariableValue('DebugPreference')
@@ -26,13 +26,14 @@ function New-MsPlaylistFromSource {
 
     switch ($SourceType) {
         'CrucialTracksPlaylist' {
-            $Tracks = New-MsSpotifyPlaylistFromCrucialTracksCommunityPlaylist -CrucialTracksCommunityPlaylistURL $SourceURL
+            $SongObjects = Get-MsSongsFromCrucialTracksCommunityPlaylist -CrucialTracksCommunityPlaylistURL $SourceURL
+            $Songs = $SongObjects.ArtistSong
         }
         'CrucialTracksPrompt' {
-            $Tracks = New-MsSpotifyPlaylistFromCrucialTracksPrompt -CrucialTracksPrompt $SourceCrucialTracksPrompt
+            $Songs = Get-MsSongsFromCrucialTracksPrompt -CrucialTracksPrompt $SourceCrucialTracksPrompt
         }
         'File' {
-            $Tracks = New-MsSpotifyPlaylistFromList -FilePath $SourceFilePath
+            $Songs = Get-MsListOfSongsFromFile -FilePath $SourceFilePath
         }
         default {
             throw "Unknown SourceType: <$SourceType>"
@@ -50,17 +51,17 @@ function New-MsPlaylistFromSource {
 
 
    $NewPlaylistFromListParams = @{
-        ListOfSongs         = $Tracks
+        ListOfSongs         = $Songs
         PlaylistName        = $TargetPlaylistName
         ApplicationName     = 'spotishell'
         PlaylistFolder      = $TargetPlaylistFolder
         PlaylistDescription = $TargetPlaylistDescription
     }
 
-    New-MsSpotifyPlaylistFromList @NewPlaylistFromListParams
+    $SpotifyPlayList = New-MsSpotifyPlaylistFromList @NewPlaylistFromListParams
  
     write-endfunction
    
-    return $Tracks
+    return $SpotifyPlayList
    
 }

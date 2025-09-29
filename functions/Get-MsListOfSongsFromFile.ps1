@@ -11,7 +11,7 @@ function Get-MsListOfSongsFromFile {
 #>
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory = $False)][string]$FileName,
+        [Parameter(Mandatory = $False)][string]$FileName
     )
    
     $DebugPreference = $PSCmdlet.GetVariableValue('DebugPreference')

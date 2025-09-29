@@ -29,12 +29,14 @@ function New-MsSpotifyPlaylistFromList {
     $playlist = New-MsSpotifyPlaylist @NewPlaylistParams
    
     foreach ($line in $ListOfSongs) {
+        write-dbg "`$line: <$line>"
+        write-dbg "`$ArtistSong: <$ArtistSong>"
         $SplatParameters = @{
             SearchString    = $line
             ShowFirstHits   = 5
             ApplicationName = $ApplicationName
         }
-        $track = Search-MuSpotifyItems @SplatParameters
+        $track = Search-MsSpotifyItems @SplatParameters
 
         $SelectedTrack = $track | select  track,
         artist,
