@@ -28,8 +28,14 @@ function Get-MsSongsFromDiscogs {
     $TrackList = $Response   | select -ExpandProperty tracklist 
 
     foreach ($Track in $TrackList) {
-        $ArtistSong = "$($Track.artists[0].name) - $($Track.title)"
-        $Artist = $Track.artists[0].name
+        try {
+            $ArtistsName = $Track.artists[0].name
+        }
+        catch {
+            $ArtistsName = ''
+        }
+        $ArtistSong = "$ArtistsName - $($Track.title)"
+        $Artist = $ArtistsName
         $Song = $Track.title
        
         [PSCustomObject]@{
