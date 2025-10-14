@@ -1,5 +1,8 @@
 Describe 'Get-MsSongsFromDiscogs (Live API Test for 222710)' {
     
+    BeforeAll {
+        import-module -force musicStuff
+    }
 
     # --- Test Case 2: Verification of a Track with an Explicit Artist (A1: Ian Dury) ---
     It 'Should correctly process Track A1 (Ian Dury And The Blockheads)' {
@@ -27,9 +30,9 @@ Describe 'Get-MsSongsFromDiscogs (Live API Test for 222710)' {
         # Set up a temporary Mock for Invoke-RestMethod that always throws an error
         Mock Invoke-RestMethod {
             throw 'Simulated 404/500 API Error' 
-        } -ModuleName Get-MsSongsFromDiscogs -Verifiable -Scope It
+        } -ModuleName musicStuff
 
         # Expect the function to catch the error and throw the custom message
-        { Get-MsSongsFromDiscogs -DiscogsCode '000000' } | Should Throw "Error retrieving data from Discogs API for release code <000000>"
+        { Get-MsSongsFromDiscogs -DiscogsCode '000000' } | Should -Throw "Error retrieving data from Discogs API for release code <000000>"
     }
 }

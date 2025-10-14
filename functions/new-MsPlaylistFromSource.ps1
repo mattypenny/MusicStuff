@@ -14,7 +14,7 @@ function New-MsPlaylistFromSource {
         $SourceType,
         [Parameter(Mandatory = $False)][string]$SourceURL,
         [Parameter(Mandatory = $False)][string]$SourceCrucialTracksPrompt,
-        [Parameter(Mandatory = $False)][string]$SourceFilePath,
+        [Parameter(Mandatory = $False)][string]$FileName,
         [Parameter(Mandatory = $False)][string]$DiscogsCode,
         [Parameter(Mandatory = $False)][string]$TargetType,
         [Parameter(Mandatory = $True)][string]$TargetPlaylistName,
@@ -35,7 +35,7 @@ function New-MsPlaylistFromSource {
             $Songs = Get-MsSongsFromCrucialTracksPrompt -CrucialTracksPrompt $SourceCrucialTracksPrompt
         }
         'File' {
-            $Songs = Get-MsListOfSongsFromFile -FilePath $SourceFilePath
+            $Songs = Get-MsListOfSongsFromFile -FileName $FileName
         }
         'DiscogsCode' {
             $SongObjects = Get-MsSongsFromDiscogs -DiscogsCode $DiscogsCode

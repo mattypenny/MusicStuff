@@ -7,7 +7,7 @@ function Search-MsSpotifyItems {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory = $True)][string] $SearchString,
-        [int]$ShowFirstHits = 5,
+        [int]$ShowFirstHits = 15,
         $applicationName = 'spotishell'
 
     )

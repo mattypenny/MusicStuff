@@ -33,7 +33,7 @@ function New-MsSpotifyPlaylistFromList {
         write-dbg "`$ArtistSong: <$ArtistSong>"
         $SplatParameters = @{
             SearchString    = $line
-            ShowFirstHits   = 5
+            ShowFirstHits   = 25
             ApplicationName = $ApplicationName
         }
         $track = Search-MsSpotifyItems @SplatParameters
