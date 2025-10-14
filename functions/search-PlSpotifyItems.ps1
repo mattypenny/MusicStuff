@@ -1,5 +1,5 @@
 
-function Search-MsSpotifyItems {
+function Search-PlSpotifyItems {
     <#
 .SYNOPSIS
    Search and return in more powershell-y format

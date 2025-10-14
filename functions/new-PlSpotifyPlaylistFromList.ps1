@@ -1,4 +1,4 @@
-function New-MsSpotifyPlaylistFromList {
+function New-PlSpotifyPlaylistFromList {
     <#
 .SYNOPSIS
    create a playlist from a supplied list of songs
@@ -26,7 +26,7 @@ function New-MsSpotifyPlaylistFromList {
         PlaylistFolder      = $PlaylistFolder
         PlaylistDescription = $PlaylistDescription
     }
-    $playlist = New-MsSpotifyPlaylist @NewPlaylistParams
+    $playlist = New-PlSpotifyPlaylist @NewPlaylistParams
    
     foreach ($line in $ListOfSongs) {
         write-dbg "`$line: <$line>"
@@ -36,7 +36,7 @@ function New-MsSpotifyPlaylistFromList {
             ShowFirstHits   = 25
             ApplicationName = $ApplicationName
         }
-        $track = Search-MsSpotifyItems @SplatParameters
+        $track = Search-PlSpotifyItems @SplatParameters
 
         $SelectedTrack = $track | select  track,
         artist,
@@ -55,7 +55,7 @@ function New-MsSpotifyPlaylistFromList {
             $Artist = $SelectedTrack.artist
             write-dbg "User selected: <$Track> by <$Artist> which has a Spotty id of <$TrackId>"
 
-            Add-MsSpotifyTrackToPlaylist -PlaylistId $playlist.Id -TrackId $SelectedTrack.TrackId -ApplicationName $ApplicationName
+            Add-PlSpotifyTrackToPlaylist -PlaylistId $playlist.Id -TrackId $SelectedTrack.TrackId -ApplicationName $ApplicationName
         }
         else {
             write-dbg "User did not select a track for line <$line>"

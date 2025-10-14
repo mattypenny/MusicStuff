@@ -1,4 +1,4 @@
-function Add-MsSpotifyTrackToPlaylist {
+function Add-PlSpotifyTrackToPlaylist {
     <#
 .SYNOPSIS
    xx

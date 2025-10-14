@@ -1,4 +1,4 @@
-function Get-MsSongsFromDiscogs {
+function Get-PlSongsFromDiscogs {
     <#
 .SYNOPSIS
    xx

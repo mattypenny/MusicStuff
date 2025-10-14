@@ -1,4 +1,4 @@
-function Get-MsListOfSongsFromFile {
+function Get-PlListOfSongsFromFile {
     <#
 .SYNOPSIS
    Read a file containing a list of tracks, and create a list of songs

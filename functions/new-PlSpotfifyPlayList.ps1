@@ -1,5 +1,5 @@
 
-function New-MsSpotifyPlaylist {
+function New-PlSpotifyPlaylist {
     <#
 .SYNOPSIS
    xx
@@ -16,7 +16,7 @@ function New-MsSpotifyPlaylist {
    
     write-startfunction
    
-     $playlistParams = @{
+    $playlistParams = @{
         UserId          = (Get-SpoCurrentUserProfile -ApplicationName $ApplicationName).id
         Name            = $PlaylistName
         Description     = $PlaylistDescription

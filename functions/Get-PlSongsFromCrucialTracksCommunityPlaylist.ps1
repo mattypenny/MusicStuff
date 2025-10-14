@@ -1,4 +1,4 @@
-function Get-MsSongsFromCrucialTracksCommunityPlaylist {
+function Get-PlSongsFromCrucialTracksCommunityPlaylist {
     <#
 .SYNOPSIS
    xx
@@ -25,8 +25,8 @@ function Get-MsSongsFromCrucialTracksCommunityPlaylist {
             $ArtistLine = $line
             $FoundSong = $False
 
-            $Artist = Get-MsTextFromHtmlLine -HtmlLine $ArtistLine
-            $Song = Get-MsTextFromHtmlLine -HtmlLine $SongLine
+            $Artist = Get-PlTextFromHtmlLine -HtmlLine $ArtistLine
+            $Song = Get-PlTextFromHtmlLine -HtmlLine $SongLine
             [PSCustomObject]@{
                 ArtistLine = $ArtistLine
                 SongLine   = $SongLine
@@ -63,7 +63,7 @@ function Get-MsSongsFromCrucialTracksCommunityPlaylist {
    
 }
 
-function Get-MsTextFromHtmlLine {
+function Get-PlTextFromHtmlLine {
     <#
 .SYNOPSIS
    Extract text from an HTML line, like <div class="text-zinc-600 dark:text-zinc-400">Bethany Eve</div> 

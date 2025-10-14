@@ -1,4 +1,4 @@
-function New-MsPlaylistFromSource {
+function New-PlPlaylistFromSource {
     <#
 .SYNOPSIS
    xx
@@ -28,17 +28,17 @@ function New-MsPlaylistFromSource {
 
     switch ($SourceType) {
         'CrucialTracksPlaylist' {
-            $SongObjects = Get-MsSongsFromCrucialTracksCommunityPlaylist -CrucialTracksCommunityPlaylistURL $SourceURL
+            $SongObjects = Get-PlSongsFromCrucialTracksCommunityPlaylist -CrucialTracksCommunityPlaylistURL $SourceURL
             $Songs = $SongObjects.ArtistSong
         }
         'CrucialTracksPrompt' {
-            $Songs = Get-MsSongsFromCrucialTracksPrompt -CrucialTracksPrompt $SourceCrucialTracksPrompt
+            $Songs = Get-PlSongsFromCrucialTracksPrompt -CrucialTracksPrompt $SourceCrucialTracksPrompt
         }
         'File' {
-            $Songs = Get-MsListOfSongsFromFile -FileName $FileName
+            $Songs = Get-PlListOfSongsFromFile -FileName $FileName
         }
         'DiscogsCode' {
-            $SongObjects = Get-MsSongsFromDiscogs -DiscogsCode $DiscogsCode
+            $SongObjects = Get-PlSongsFromDiscogs -DiscogsCode $DiscogsCode
             $Songs = $SongObjects.ArtistSong
         }
         default {
@@ -55,7 +55,7 @@ function New-MsPlaylistFromSource {
         PlaylistDescription = $TargetPlaylistDescription
     }
 
-    $SpotifyPlayList = New-MsSpotifyPlaylistFromList @NewPlaylistFromListParams
+    $SpotifyPlayList = New-PlSpotifyPlaylistFromList @NewPlaylistFromListParams
  
     write-endfunction
    

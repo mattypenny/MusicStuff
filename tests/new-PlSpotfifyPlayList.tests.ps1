@@ -1,19 +1,19 @@
 
-describe "function New-MsSpotifyPlaylist" {
+describe "function New-PlSpotifyPlaylist" {
     
     It "creates a new playlist" {
 
-        import-module -Name MusicStuff -Force
+        import-module -Name PlaylistStuff -Force
         $Now = Get-Date -Format "yyyyMMdd-HHmmss"
 
         $Params = @{
-            ApplicationName = "spotishell" 
-            PlaylistName = "Test Playlist - $Now" 
+            ApplicationName     = "spotishell" 
+            PlaylistName        = "Test Playlist - $Now" 
             PlaylistDescription = "This is a test playlist created by Pester on $Now" 
-            PlaylistFolder = "Test playlists"
+            PlaylistFolder      = "Test playlists"
         }
         
-        $result = New-MsSpotifyPlaylist @Params 
+        $result = New-PlSpotifyPlaylist @Params 
         
         $result | Should -Not -BeNullOrEmpty
         # $result | Should -HaveProperty "Id"

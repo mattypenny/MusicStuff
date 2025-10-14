@@ -1,11 +1,11 @@
 @{
     # The name of the module script file
-    RootModule        = 'MusicStuff.psm1'
+    RootModule        = 'PlaylistStuff.psm1'
 
-    # ScriptsToProcess = @("C:\Users\matty\OneDrive\powershell\Modules\MusicStuff\functions\*.ps1")
+    # ScriptsToProcess = @("C:\Users\matty\OneDrive\powershell\Modules\PlaylistStuff\functions\*.ps1")
 
     # Public functions to export
-    FunctionsToExport = @("*-Ms*")
+    FunctionsToExport = @("*-Pl*")
 
     ModuleVersion     = '0.1.0'
 
