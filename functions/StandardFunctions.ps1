@@ -418,3 +418,32 @@ function write-dbg {
    
    
 }
+
+function Get-SsfParameter {
+    <#
+.SYNOPSIS
+   xx
+#>
+    [CmdletBinding()]
+    param (
+        $ParameterFile = "$PSParametersFolder\GeneralParameters.csv",
+        [Parameter(Mandatory = $True)][string] $Parameter
+    )
+   
+    $DebugPreference = $PSCmdlet.GetVariableValue('DebugPreference')
+   
+    write-startfunction
+   
+    $ParameterLine = Import-Csv -Path $ParameterFile | where-object { $_.Parameter -eq $Parameter }
+    if ($ParameterLine) {
+        $Value = $ParameterLine.Value
+    }
+    else {
+        throw "Parameter <$Parameter> not found in file <$ParameterFile>"
+    }
+   
+    write-endfunction
+   
+    return $Value
+   
+}
