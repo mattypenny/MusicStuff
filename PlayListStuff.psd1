@@ -5,7 +5,8 @@
     # ScriptsToProcess = @("C:\Users\matty\OneDrive\powershell\Modules\PlaylistStuff\functions\*.ps1")
 
     # Public functions to export
-    FunctionsToExport = @("*-Pl*")
+    FunctionsToExport = @("*-Pl*",
+        "*-Ssf*")
 
     ModuleVersion     = '0.1.0'
 
