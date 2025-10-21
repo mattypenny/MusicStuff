@@ -426,8 +426,8 @@ function Get-SsfParameter {
 #>
     [CmdletBinding()]
     param (
-        $ParameterFile = "$PSParametersFolder\GeneralParameters.csv",
-        [Parameter(Mandatory = $True)][string] $Parameter
+        [Parameter(Mandatory = $True)][string] $Parameter,
+        $ParameterFile = "$env:PSParametersFolder\GeneralParameters.csv"
     )
    
     $DebugPreference = $PSCmdlet.GetVariableValue('DebugPreference')
